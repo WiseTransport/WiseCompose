@@ -1,0 +1,60 @@
+services:
+  frontend:
+    build: ./WiseFrontend
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+    depends_on:
+      - otp-provider
+      - geocode-ms
+      - users-ms
+
+  otp-provider:
+    build:
+      context: ./OTPProvider
+      args:
+        BKK_KEY: ${BKK_KEY}
+    environment:
+      BKK_KEY: ${BKK_KEY}
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+
+  geocode-ms:
+    build: ./GeocodeMS
+    ports:
+      - "8001:8000"
+    environment:
+      GOOGLE_KEY: ${GOOGLE_KEY}
+    networks:
+      - backend
+
+  users-ms:
+    build: ./UsersMS
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: "${DB_USERSMS_DRIVER}://${DB_USER}:${DB_PASSWORD}@users_db:5432/${DB_NAME}"
+    networks:
+      - backend
+    depends_on:
+      - users_db
+
+  users_db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend
+
+volumes:
+  pgdata:
+
+networks:
+  backend:

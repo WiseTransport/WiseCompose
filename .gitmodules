@@ -1,0 +1,12 @@
+[submodule "WiseFrontend"]
+	path = WiseFrontend
+	url = https://github.com/WiseTransport/WiseFrontend
+[submodule "OTPProvider"]
+	path = OTPProvider
+	url = https://github.com/WiseTransport/OTPProvider
+[submodule "GeocodeMS"]
+	path = GeocodeMS
+	url = https://github.com/WiseTransport/GeocodeMS
+[submodule "UsersMS"]
+	path = UsersMS
+	url = https://github.com/Forcefinity/UsersMS
