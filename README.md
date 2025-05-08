@@ -34,6 +34,8 @@
    * Get your BKK key from [opendata.bkk.hu](https://opendata.bkk.hu). A test key for NOIT is:
      `ac84fd0b-c679-419b-935a-831744f6728c`
    * Set the appropriate database and API key values.
+  
+3. Configure `UsersMS` according to README in the repo.
 
 ### Launch with Docker Compose
 
