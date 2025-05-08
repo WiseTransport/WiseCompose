@@ -35,6 +35,10 @@
      `ac84fd0b-c679-419b-935a-831744f6728c`
    * Set the appropriate database and API key values.
 
+---
+### Don't forget to configure each specific repository (submodule) !!
+---
+
 ### Launch with Docker Compose
 
 Run the following command from the project root:
@@ -54,3 +58,4 @@ This command will:
   * Users Microservice: `localhost:8000`
 
 Make sure your Docker daemon is running. Services are connected via a shared `backend` network and `users_db` data is persisted in a Docker volume named `pgdata`.
+
